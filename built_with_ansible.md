@@ -70,7 +70,7 @@ mpi@host0:~/mcr/ansible $ . venv/bin/activate
 ~~~
 
 ### インベントリーの修正と確認
-ファイル `inventory.yaml` を適宜に修正してから、以下を実行。
+ファイル [inventory.yaml](ansible/inventory.yaml) を適宜に修正してから、以下を実行。
 ~~~sh
 (venv) mpi@host0:~/mcr/ansible $ ansible-inventory --list # output: ノードのリスト
 (venv) mpi@host0:~/mcr/ansible $ ansible all -m ping -k   # input: ssh password, output: pingモジュールの結果
