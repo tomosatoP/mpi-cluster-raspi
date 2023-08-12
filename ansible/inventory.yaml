@@ -1,0 +1,11 @@
+mpimachines:
+  vars:
+    gw_ip_address: "xxx.xxx.xxx.xxx"
+  hosts:
+    host0.local:
+      ansible_connection: local
+      static_ip_address: "xxx.xxx.xxx.150/24"
+    host1.local:
+      static_ip_address: "xxx.xxx.xxx.151/24"
+    host2.local:
+      static_ip_address: "xxx.xxx.xxx.152/24"
