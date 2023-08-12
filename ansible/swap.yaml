@@ -1,0 +1,8 @@
+---
+- name: Extend swap to 8GByte.
+  hosts: all
+  become: true
+
+  tasks:
+    - ansible.builtin.import_role: name=swap
+      tags: extend swap to 8GByte
