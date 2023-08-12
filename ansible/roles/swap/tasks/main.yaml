@@ -1,0 +1,13 @@
+---
+- name: CONF_SWAPSIZE swapfile by /etc/dphys-swapfile
+  ansible.builtin.replace:
+    path: /etc/dphys-swapfile
+    regexp: "^CONF_SWAPSIZE=[0-9]+$"
+    replace: "CONF_SWAPSIZE=8192"
+
+- name: Restart dphys-swapfile service
+  ansible.builtin.systemd:
+    name: dphys-swapfile.service
+    state: restarted
+    enabled: true
+    daemon_reload: true
