@@ -1,0 +1,8 @@
+---
+- name: Set timezone & system locale
+  hosts: all
+  become: true
+
+  tasks:
+    - ansible.builtin.import_role: name=locale
+      tags: locale
