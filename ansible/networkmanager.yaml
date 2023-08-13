@@ -1,0 +1,8 @@
+---
+- name: Change dhcpcd & wpa_supplicant to NetworkManager
+  hosts: all
+  become: true
+
+  tasks:
+    - ansible.builtin.import_role: name=networkmanager
+      tags: networkmanager
