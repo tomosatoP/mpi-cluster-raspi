@@ -1,0 +1,23 @@
+---
+- name: Disable and stop dhcpcd service
+  ansible.builtin.systemd:
+    name: dhcpcd.service
+    state: stopped
+    enabled: false
+    masked: true
+    daemon_reload: true
+
+- name: Disable and stop wpa_supplicant service
+  ansible.builtin.systemd:
+    name: wpa_supplicant.service
+    state: stopped
+    enabled: false
+    masked: true
+    daemon_reload: true
+
+- name: Enable and start NetworkManager service
+  ansible.builtin.systemd:
+    name: NetworkManager.service
+    state: started
+    enabled: true
+    daemon_reload: true
