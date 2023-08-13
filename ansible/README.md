@@ -20,5 +20,6 @@
 
 [ethernet.yaml](ethernet.yaml), [roles/](roles/)
 - 固定IPアドレスを設定する。mpi クラスタでは必須。
+- 制御ノードの再起動ができないので、失敗する（playbook は実行を継続）。
 - 途中で停止ししてしまう問題が未解決のまま。
 ---
