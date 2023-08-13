@@ -1,6 +1,7 @@
 mpimachines:
   vars:
     gw_ip_address: "xxx.xxx.xxx.xxx"
+    dns_ip_address: "xxx.xxx.xxx.xxx"
   hosts:
     host0.local:
       ansible_connection: local
