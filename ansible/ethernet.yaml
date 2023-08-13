@@ -1,0 +1,16 @@
+- name: Set up a static IP address for Ethernet
+  hosts: all
+  become: true
+
+  tasks:
+    - ansible.builtin.import_role: name=ethernet
+      tags: ethernet
+
+  post_tasks:
+    - name: Restart
+      ansible.builtin.reboot:
+
+    - name: Waiting connection
+      ansible.builtin.wait_for_connection:
+      delay: 5
+      timeout: 120
