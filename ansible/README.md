@@ -16,6 +16,6 @@
 - Bluetooth サービスを無効にする
 
 [networkmanager.yaml](networkmanager.yaml)
-- dpcpd, wpa-sapplicant サービスを停止し、NetworkManager サービスを有効にする。
+- dhcpcd, wpa_sapplicant サービスを停止し、NetworkManager サービスを有効にする。
 
 [ethernet.yaml](ethernet.yaml)
