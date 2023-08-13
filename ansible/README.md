@@ -1,6 +1,6 @@
 # playbook(yaml) の説明
 
-[ssh.yaml](ssh.yaml)
+[ssh.yaml](ssh.yaml), [roles/ssh/tasks/main.yaml](roles/ssh/tasks/main.yaml)
 - SSH認証鍵を設定し、公開鍵を配布する。
 
 [package.yaml](package.yaml)
