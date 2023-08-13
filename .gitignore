@@ -1,5 +1,6 @@
 # ansible
 ansible.cfg
+ansible.cfg.disabled
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
