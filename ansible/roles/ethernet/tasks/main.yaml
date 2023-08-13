@@ -1,0 +1,13 @@
+---
+- name: Configure interface eth0 on NetworkManager
+  community.general.nmcli:
+    type: ethernet
+    conn_name: "ethernet 1"
+    ifname: eth0
+    ip4: "{{static_ip_address}}"
+    gw4: "{{gw_ip_address}}"
+    dns4: "{{dns_ip_address}}"
+    state: present
+
+- name: Update interface eth0 on NetworkManager
+  ansible.builtin.command: nmcli con up "ethernet 1"
