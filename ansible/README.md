@@ -15,7 +15,7 @@
 [bluetooth.yaml](bluetooth.yaml), [roles/bluetooth/tasks/main.yaml](roles/bluetooth/tasks/main.yaml)
 - 必要のない Bluetooth サービスを無効にする
 
-[networkmanager.yaml](networkmanager.yaml), [roles/networkmanager/tasks/main.yaml](roles/netwoksmanager/tasks/main.yaml)
+[networkmanager.yaml](networkmanager.yaml), [roles/networkmanager/tasks/main.yaml](roles/networkmanager/tasks/main.yaml)
 - dhcpcd, wpa_sapplicant サービスを停止し、NetworkManager サービスを有効にする。
 
 [ethernet.yaml](ethernet.yaml), [roles/ethernet/defaults/main.yaml](roles/ethernet/defaults/main.yaml), [roles/ethernet/tasks/main.yaml](roles/ethernet/tasks/main.yaml)
