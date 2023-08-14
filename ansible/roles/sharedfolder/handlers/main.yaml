@@ -1,1 +1,6 @@
-
+---
+- name: Restart nfs-server service
+  ansible.builti.systemd
+    name: nfs-server.service
+    daemon_reload: true
+    state: restarted
