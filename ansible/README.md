@@ -22,4 +22,8 @@
 - 固定IPアドレスを設定する。mpi クラスタでは必須。
 - 制御ノードの再起動ができないので、失敗する（playbook は実行を継続）。
 - 途中で停止ししてしまう問題が未解決のまま。
+
+[sharedfolder.yaml](sharedfolder.yaml), [roles/sharedfolder/defaults/main.yaml](roles/sharedfolder/defaults/main.yaml), [roles/sharedfolder/handlers/main.yaml](roles/sharedfolder/handlers/main.yaml), [roles/sharedfolder/tasks/main.yaml](roles/sharedfolder/tasks/main.yaml), [roles/sharedfolder/templates/exports.j2](roles/sharedfolder/templates/exports.j2)
+- NFS 共有フォルダを設定する。mpi クラスタでは必須。
+- /etc/exports ファイル編集を作成中。
 ---
