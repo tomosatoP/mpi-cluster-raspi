@@ -1,47 +1,59 @@
 ---
-- name: Install package on localhost
-  ansible.builtin.package:
-    state: latest
-    name: "{{ item }}"
-  loop: "{{ packages.controller }}"
-  delegate_to: localhost
-  run_once: true
+- name: for controller
+  block:
 
-- name: Create shared folder on localhost
-  ansible.builtin.file:
-    path: "{{ sharedfolder.path }}"
-    state: directory
-    group: "{{ sharedfolder.group }}"
-    owner: "{{ sharedfolder.owner }}"
-    mode: "{{ sharedfolder.mode }}"
-  delegate_to: localhost
-  run_once: true
+    - name: Install package on localhost
+      ansible.builtin.package:
+        state: latest
+        name: "{{ item }}"
+      loop: "{{ packages.controller }}"
+      delegate_to: localhost
+      run_once: true
 
-- name: Configure /etc/exports on localhost
-  debug:
-    msg: "/etc/exports"
-  notify: Restart nfs-server service
-  delegate_to: localhost
-  run_once: true
+    - name: Create shared folder on localhost
+      ansible.builtin.file:
+        path: "{{ sharedfolder.path }}"
+        state: directory
+        group: "{{ sharedfolder.group }}"
+        owner: "{{ sharedfolder.owner }}"
+        mode: "{{ sharedfolder.mode }}"
+      delegate_to: localhost
+      run_once: true
 
-- name: Install package
-  ansible.builtin.package:
-    state: latest
-    name: "{{ item }}"
-  loop: "{{ packages.target }}"
+    - name: Configure /etc/exports on localhost
+      ansible.builtin.lineinfile:
+        path: /etc/exports
+        line: "{{ sharedfolder.path }} {{ inventory_hostname }}{{ nfs.opt }}"
+        backup: true
+      throttle: 1
+      notify: Restart nfs-server service on localhost
+      delegate_to: localhost
 
-- name: Create shared folder
-  ansible.builtin.file:
-    path: "{{ sharedfolder.path }}"
-    state: directory
-    mode: "{{ sharedfolder.mode }}"
-    group: "{{ sharedfolder.group }}"
-    owner: "{{ sharedfolder.owner }}"
+    - name: flush handlers
+      ansible.builtin.meta: flush_handlers
 
-- name: Mount shared folder
-  ansible.posix.mount:
-    src: "host0.local:{{ sharedfolder.path }}"
-    path: "{{ sharedfolder.path }}"
-    state: mounted
-    fstype: nfs
-    opts: rw,sync,hard,intr
+- name: for receivers
+  block:
+
+    - name: Install package
+      ansible.builtin.package:
+        state: latest
+        name: "{{ item }}"
+      loop: "{{ packages.target }}"
+
+    - name: Create shared folder
+      ansible.builtin.file:
+        path: "{{ sharedfolder.path }}"
+        state: directory
+        mode: "{{ sharedfolder.mode }}"
+        group: "{{ sharedfolder.group }}"
+        owner: "{{ sharedfolder.owner }}"
+
+    - name: Mount shared folder
+      ansible.posix.mount:
+        src: "host0.local:{{ sharedfolder.path }}"
+        path: "{{ sharedfolder.path }}"
+        state: mounted
+        fstype: nfs
+        opts: rw,sync,hard,intr
+      notify: reconnect
