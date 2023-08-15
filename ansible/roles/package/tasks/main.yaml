@@ -1,5 +1,7 @@
 ---
 - name: Update installed packages
-  ansible.builtin.package:
+  ansible.builtin.apt:
     name: "*"
+    update_cache: true
     state: latest
+    autoclean: true
