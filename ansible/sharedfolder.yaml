@@ -1,6 +1,6 @@
 ---
 - name: Create a shared folder on localhost and set up an automount
-  hosts: host[1:2].local
+  hosts: receivers
   become: true
 
   tasks:
