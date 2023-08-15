@@ -1,5 +1,5 @@
 ---
-- name: for controller
+- name: for commander
   block:
 
     - name: Install package on localhost
