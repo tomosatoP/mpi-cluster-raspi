@@ -1,5 +1,5 @@
 # 各ノードの OS システムなどを更新
-`pi0, pi1, pi2 共通`
+`mpi0, mpi1, mpi2 共通`
 
 * OS 更新
 * WiFi 無効、Bluetooth 無効、電源 LED 設定変更
