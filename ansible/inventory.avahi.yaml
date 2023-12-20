@@ -5,4 +5,4 @@ avahizeroconf:
         pi0.local:
           ansible_connection: local
     managed:
-      hosts: pi[1:2].local
+      hosts: mpi[1:2].local
