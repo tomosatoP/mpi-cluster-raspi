@@ -1,11 +1,11 @@
-# ラズパイクラスタで `lammps` を稼働
-ラズパイのマルチノード並列処理の環境構築と `lammps` の導入
+# ラズパイクラスタで `LAMMPS` を稼働
+ラズパイのマルチノード並列処理の環境構築と `LAMMPS` の導入
 * Ansible: パッケージマネージャーを使った導入
   * クラスタ構築
   * OpenMPI(with PMIx): パッケージマネージャーを使った導入
   * Slurm: パッケージマネージャーを使った導入
   * Apptainer: インストーラーを使った導入
-* Lammps: SIF (Apptainer コンテナ) で構築
+* LAMMPS: SIF (Apptainer コンテナ) で構築
 > Apptainer の制限：コンテナ内外で、同じ OpenMPI を使う
 
 ## 環境
@@ -39,8 +39,8 @@
 [ansible を使う場合](ansible/README.md)<br>
 [ansible を使わない場合](without-ansible/README.md)<br>
 
-## lammps
-`pi0`
+## LAMMPS
+`mpi0`
 ### SIF 作成
 ~~~sh
 cp lammps/* /mpi
