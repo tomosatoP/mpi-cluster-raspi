@@ -5,5 +5,5 @@
 
 ##
 [slurm.conf 作成用 HTML ファイル](slurm-wlm-configurator.html)<br>
-
+https://slurm.schedmd.com/configurator.html
 ---
