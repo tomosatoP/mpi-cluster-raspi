@@ -1,5 +1,5 @@
 # Slurm - 計算ノード
-`pi1, pi2`
+`mpi1, mpi2`
 
 > Configless slurm を導入 https://slurm.schedmd.com/configless_slurm.html
 
@@ -12,6 +12,7 @@ https://slurm.schedmd.com/
 ## `Slurm packages` をインストール
 ~~~sh
 sudo apt install slurmd
+
 # 所有者変更 (slurm -> mpi)
 sudo chown mpi:mpi -R /var/log/slurm
 sudo chown mpi:mpi -R /var/lib/slurm
