@@ -3,13 +3,13 @@
 ## コマンド
 
 ## LAMMPS の構築に使える compiler のリスト
-|Compiler|cmake<br>(cmake/presets/)|packages<br>build|packages<br>run|
+|Compiler|cmake<br>(cmake/presets/)|packages<br>build時|packages<br>run時|
 |---|---|---|---|
 |-|-|gfortran<br>clang-format||
 |GCC|gcc.cmake|gfortran<br>clang-format<br>libgsl-dev|gsl-bin<br>libgomp1|
 |Clang/LLVM|clang.cmake|gfortran<br>clang-format<br>clang<br>clang-tidy<br>libomp-dev|libomp5|
 ## LAMMPS 構築 & 実行 関連のパッケージ
-|name|build|run|
+|name|build時|run時|
 |---|---|---|
 |PNG|libpng-dev|libpng-tools|
 |JPEG|libjpeg62-turbo-dev|libjpeg62-turbo|
