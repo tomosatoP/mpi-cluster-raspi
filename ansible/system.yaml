@@ -1,0 +1,8 @@
+---
+- name: Configure system - timezone, locale
+  hosts: mpimachines
+  become: true
+
+  tasks:
+    - ansible.builtin.import_role:
+        name: system

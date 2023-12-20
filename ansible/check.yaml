@@ -1,0 +1,30 @@
+---
+- name: Check vars
+  hosts: mpimachines
+  become: true
+
+  tasks:
+    - ansible.builtin.debug:
+        msg: "{{ ansible_facts.env.HOME }}"
+    - ansible.builtin.debug:
+        msg: "{{ ansible_facts.env.USER }}"
+    - ansible.builtin.debug:
+        msg: "{{ ansible_facts.env.LANG }}"
+    - ansible.builtin.debug:
+        msg: "{{ ansible_facts.default_ipv4.address }}"
+    - ansible.builtin.debug:
+        msg: "{{ ansible_play_hosts }}"
+    - ansible.builtin.debug:
+        msg: "{{ inventory_hostname }}"
+    - ansible.builtin.debug:
+        msg: "{{ inventory_dir }}"
+
+    - ansible.builtin.debug:
+        msg: "{{ hostvars[item]['ansible_all_ipv4_addresses'] }}"
+      with_items: "{{ ansible_play_hosts }}"
+
+    - ansible.builtin.debug:
+        msg: "{{ hostvars['pi0'].static_ip_address }}"
+
+    - ansible.builtin.debug:
+        msg: "{{ lookup('ansible.builtin.env', 'USER') }}"

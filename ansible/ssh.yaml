@@ -1,0 +1,7 @@
+---
+- name: Configure SSH public key authentication
+  hosts: managed
+
+  tasks:
+    - ansible.builtin.import_role:
+        name: ssh

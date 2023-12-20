@@ -1,0 +1,6 @@
+mpimachines:
+  children:
+    control:
+      hosts: mpi0
+    managed:
+      hosts: mpi[1:2]

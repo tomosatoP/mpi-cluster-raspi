@@ -1,0 +1,8 @@
+---
+- name: Setup shared folder
+  hosts: managed
+  become: true
+
+  tasks:
+    - ansible.builtin.import_role:
+        name: sharedfolder

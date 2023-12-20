@@ -1,0 +1,8 @@
+---
+- name: Install Slurm packages
+  hosts: mpimachines
+  become: true
+
+  tasks:
+    - ansible.builtin.import_role:
+        name: slurm

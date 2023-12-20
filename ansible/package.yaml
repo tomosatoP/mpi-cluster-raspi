@@ -1,0 +1,8 @@
+---
+- name: Update installed packages
+  hosts: mpimachines
+  become: true
+
+  tasks:
+    - ansible.builtin.import_role:
+        name: package
