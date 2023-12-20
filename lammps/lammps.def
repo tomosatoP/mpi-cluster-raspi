@@ -1,0 +1,78 @@
+Bootstrap: docker
+From: debian
+Stage: build-lammps
+
+%post
+  # install Related Packages (Clang/LLVM compiler)
+  apt-get -yq update
+  DEBIAN_FRONTEND=noninteractive apt-get -yq install --no-install-recommends \
+    git ca-certificates \
+    cmake build-essential ccache pkg-config \
+    gfortran clang-format clang clang-tidy \
+    libfftw3-dev \
+    libopenmpi-dev \
+    libomp-dev \
+    libjpeg62-turbo-dev libpng-dev ffmpeg \
+    libblas-dev liblapack-dev \
+    libhdf5-serial-dev
+  apt-get clean
+  rm -rf /var/lib/apt/lists/*
+
+  # lammps build
+  export LD_LIBRARY_PATH=/usr/local/lib:${LD_LIBRARY_PATH}
+
+  git clone --depth 1 -b release https://github.com/lammps/lammps.git /lammps
+
+  mkdir -p build
+  cd build
+
+  cmake \
+    -C /lammps/cmake/presets/most.cmake \
+    -C /lammps/cmake/presets/clang.cmake \
+    -D LAMMPS_MEMALIGN=64 \
+    -D CMAKE_INSTALL_PREFIX=/opt/lammps \
+    -D BUILD_SHARED_LIBS=yes \
+    -D WITH_JPEG=yes -D WITH_PNG=yes -D WITH_FFMPEG=yes \
+    -D PKG_OPT=yes \
+    -D BUILD_MPI=yes \
+    -D PKG_OPENMP=yes -D BUILD_OMP=yes \
+    /lammps/cmake/
+  cmake --build .
+  make install
+  make clean
+
+Bootstrap: docker
+From: debian
+
+%setup
+
+%files from build-lammps
+  /opt/lammps /opt/lammps
+
+%post
+  # install Related Packages (Clang/LLVM compiler)
+  apt-get -yq update
+  DEBIAN_FRONTEND=noninteractive apt-get -yq install --no-install-recommends \
+    libfftw3-bin \
+    mpi-default-bin libpmix-bin \
+    libomp5 \
+    libjpeg62-turbo libpng-tools ffmpeg \
+    libblas3 liblapack3 \
+    hdf5-tools
+  apt-get clean
+  rm -rf /var/lib/apt/lists/*
+
+%environment
+  export LD_LIBRARY_PATH=/usr/local/lib:/opt/lammps/lib:${LD_LIBRARY_PATH}
+  export PATH=/opt/lammps/bin:${PATH}
+  #export USER_PATH=/opt/lammps/bin:${USER_PATH}
+
+%startscript
+
+%runscript
+  lmp -help
+
+%test
+  which lmp
+
+%help
