@@ -24,7 +24,7 @@ sudo chown mpi:mpi -R /var/lib/slurm
 # 初期設定の slurm.conf は、下記で作成
 start /usr/share/doc/slurmctld/slurm-wlm-configrator.html
 ~~~
-[slurm.conf](conf/slurm.conf)
+[/etc/slurm/slurm.conf](conf/slurm.conf)
 |項目|default|設定値
 |---|---|---|
 |SlurmctldHost=|linux0|mpi0|
@@ -41,7 +41,7 @@ start /usr/share/doc/slurmctld/slurm-wlm-configrator.html
 |SlurmctldParameters=||enable_configless|
 > `CPUs=` の値は、`slurmd -C` コマンドの出力を転記
 
-cgroup.conf<br>
+[/etc/slurm/cgroup.conf](conf/cgroup.conf)
 |項目|default|設定値
 |---|---|---|
 |CgroupPlugin=|autodetect|autodetect|
