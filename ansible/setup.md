@@ -56,9 +56,9 @@ hpc/ansible/───inventory.yaml      # グループとホストの構成を�
      ├─group_vars/─┬─all.yaml      # 共通のインベントリ変数を記載
      │             ├─control.yaml  # control グループのインベントリ変数を記載
      │             └─managed.yaml  # managed グループのインベントリ変数を記載
-     └─host_vars/─┬─mpi0.yaml      # pi0 のインベントリ変数を記載
-                  ├─mpi1.yaml      # pi1 のインベントリ変数を記載
-                  └─mpi2.yaml      # pi2 のインベントリ変数を記載
+     └─host_vars/─┬─mpi0.yaml      # mpi0 のインベントリ変数を記載
+                  ├─mpi1.yaml      # mpi1 のインベントリ変数を記載
+                  └─mpi2.yaml      # mpi2 のインベントリ変数を記載
 ~~~
 確認
 ~~~sh
