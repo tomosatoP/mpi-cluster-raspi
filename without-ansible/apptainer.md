@@ -1,5 +1,5 @@
 # Apptainer 導入
-`pi0, pi1, pi2 共通`
+`mpi0, mpi1, mpi2 共通`
 
 https://apptainer.org/docs/admin/latest/installation.html
 
