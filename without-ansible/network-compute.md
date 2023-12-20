@@ -5,8 +5,8 @@
 ## 固定 IP アドレス設定
 ~~~sh
 # 下記のように変更して入力
-# pi1: xxx -> 151
-# pi2: xxx -> 152
+# mpi1: xxx -> 151
+# mpi2: xxx -> 152
 sudo nmcli connection add type ethernet ifname eth0 \
     con-name wired \
     autoconnect yes \
