@@ -13,7 +13,7 @@ ssh-keygen
 # > Enter passphrase (empty for no passphrase):
 # > Enter same passphrase again:
 ~~~
-|||
+||ファイル名|
 |---|---|
 |秘密鍵|~/.ssh/id_rsa|
 |公開鍵|~/.ssh/id_rsa.pub|
