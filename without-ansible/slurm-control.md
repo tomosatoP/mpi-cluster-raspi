@@ -1,6 +1,6 @@
 # Slurm - 制御ノード
-`pi0`
-> 計算ノードも兼ねる<br>
+`mpi0`
+> 計算ノードを兼ねる<br>
 > Configless slurm を導入 https://slurm.schedmd.com/configless_slurm.html
 
 https://slurm.schedmd.com/
@@ -14,6 +14,7 @@ https://slurm.schedmd.com/
 sudo apt install slurm-wlm
 # 確認
 sudo slurmctld -V
+
 # 所有者変更 (slurm -> mpi)
 sudo chown mpi:mpi -R /var/log/slurm
 sudo chown mpi:mpi -R /var/lib/slurm
@@ -26,8 +27,8 @@ start /usr/share/doc/slurmctld/slurm-wlm-configrator.html
 slurm.conf<br>
 |項目|default|設定値
 |---|---|---|
-|SlurmctldHost=|linux0|pi0|
-|NodeName=|linux[1-32] CPUs=1 State=UNKNOWN|pi[0-2] CPUs=4 State=UNKNOWN|
+|SlurmctldHost=|linux0|mpi0|
+|NodeName=|linux[1-32] CPUs=1 State=UNKNOWN|mpi[0-2] CPUs=4 State=UNKNOWN|
 |SlurmUser=|slurm|mpi|
 ||||
 |MpiDefault=|none|pmix|
