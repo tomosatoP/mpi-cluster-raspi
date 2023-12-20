@@ -10,7 +10,7 @@ exports:
   options: "(rw,sync,no_subtree_check)"
 
 sharedfolder:
-  hostname: "pi0"
+  hostname: "mpi0"
   path: "/mpi"
   mode: "0777"
   owner: "mpi"
