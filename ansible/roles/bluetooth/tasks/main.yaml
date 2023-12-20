@@ -1,8 +1,0 @@
----
-- name: Disable bluetooth
-  ansible.builtin.systemd:
-    name: bluetooth.service
-    state: stopped
-    enabled: false
-    masked: true
-    daemon_reload: true

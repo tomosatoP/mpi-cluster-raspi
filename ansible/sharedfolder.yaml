@@ -1,8 +1,0 @@
----
-- name: Create a shared folder on localhost and set up an automount
-  hosts: receivers
-  become: true
-
-  tasks:
-    - ansible.builtin.import_role: name=sharedfolder
-      tags: shared folder

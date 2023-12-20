@@ -1,8 +1,0 @@
----
-- name: Disable bluetooth
-  hosts: all
-  become: true
-
-  tasks:
-    - ansible.builtin.import_role: name=bluetooth
-      tags: disable bluetooth

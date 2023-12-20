@@ -1,8 +1,0 @@
----
-- name: Update installed packages
-  hosts: all
-  become: true
-
-  tasks:
-    - ansible.builtin.import_role: name=package
-      tags: update installed packages
