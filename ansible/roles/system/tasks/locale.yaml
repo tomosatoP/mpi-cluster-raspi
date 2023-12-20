@@ -1,0 +1,13 @@
+---
+- name: Set timezone
+  community.general.timezone:
+    name: "{{ locale.timezone }}"
+
+- name: Add locale
+  community.general.locale_gen:
+    name: "{{ locale.locale }}"
+    state: present
+
+- name: Set locale
+  ansible.builtin.command: localectl set-locale LANG={{ locale.locale }}
+  when: locale.locale != ansible_facts.env.LANG

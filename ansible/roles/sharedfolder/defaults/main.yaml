@@ -1,0 +1,17 @@
+---
+packages:
+  control:
+    - nfs-kernel-server
+  compute:
+    - nfs-common
+
+exports:
+  ipaddress: "192.168.68.0/24"
+  options: "(rw,sync,no_subtree_check)"
+
+sharedfolder:
+  hostname: "pi0"
+  path: "/mpi"
+  mode: "0777"
+  owner: "mpi"
+  group: "mpi"

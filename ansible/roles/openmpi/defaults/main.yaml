@@ -1,0 +1,5 @@
+---
+packages:
+  - mpi-default-bin
+  - libpmix-bin
+  - libomp5

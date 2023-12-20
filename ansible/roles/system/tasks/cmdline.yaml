@@ -1,0 +1,10 @@
+---
+- name: Cat cmdline_txt
+  ansible.builtin.command: cat /boot/cmdline.txt
+  register: cmdline_content
+  check_mode: no
+  changed_when: false
+
+- name: Set cmdline_txt
+  ansible.builtin.command: sed -i 's/$/ {{ item }}/' /boot/cmdline.txt
+  when: cmdline_content.stdout is not ansible.builtin.search( item )

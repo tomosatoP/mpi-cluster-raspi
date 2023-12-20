@@ -1,0 +1,27 @@
+---
+- name: Create directory for ssh keypair on localhost
+  ansible.builtin.file:
+    state: directory
+    path: "{{ lookup('ansible.builtin.env', 'HOME') }}/.ssh/"
+    mode: 0700
+  delegate_to: localhost
+  run_once: true
+
+- name: Generate OpenSSH private and public keys on localhost
+  community.crypto.openssh_keypair:
+    path: "{{ lookup('ansible.builtin.env', 'HOME') }}/.ssh/id_rsa"
+  delegate_to: localhost
+  run_once: true
+
+- name: Adds an SSH authorized key
+  ansible.posix.authorized_key:
+    user: "{{ ansible_env.USER }}"
+    key: "{{ lookup('ansible.builtin.file', lookup('ansible.builtin.env', 'HOME') + '/.ssh/id_rsa.pub') }}"
+
+- name: Manage SSH config for user
+  community.general.ssh_config:
+    user: "{{ ansible_env.USER }}"
+    host: "{{ inventory_hostname_short }}"
+    hostname: "{{ inventory_hostname }}"
+    identity_file: "{{ lookup('ansible.builtin.env', 'HOME') + '/.ssh/id_rsa' }}"
+  delegate_to: localhost

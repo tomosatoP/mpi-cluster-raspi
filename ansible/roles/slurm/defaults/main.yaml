@@ -1,0 +1,31 @@
+packages:
+  control:
+    - slurm-wlm
+  managed:
+    - slurmd
+
+conf_files:
+  - { src: "slurm.conf.default", dest: "/etc/slurm/slurm.conf" }
+  - { src: "cgroup.conf.default", dest: "/etc/slurm/cgroup.conf" }
+
+slurm_conf:
+  - { item: "SlurmctldHost", value: "pi0"}
+  - { item: "NodeName", value: "pi[0-2] CPUs=4 State=UNKNOWN" }
+  - { item: "SlurmUser", value: "mpi" }
+  - { item: "MpiDefault", value: "pmix" }
+  - { item: "TaskPlugin", value: "task/cgroup,task/affinity" }
+  - { item: "ProctrackType", value: "proctrack/cgroup" }
+  - { item: "JobAcctGatherType", value: "jobacct_gather/cgroup" }
+  - { item: "PrologFlags", value: "Contain" }
+  - { item: "SlurmctldParameters", value: "enable_configless" }
+
+cgroup_conf:
+  - { item: "CgroupPlugin", value: "autodetect" }
+  - { item: "ConstrainCores", value: "yes" }
+  - { item: "ConstrainDevices", value: "yes" }
+  - { item: "ConstrainRAMSpace", value: "no" }
+  - { item: "ConstrainSwapSpace", value: "no" }
+
+slurmd_service:
+  - { src: "ConditionPathExists", dest: "#ConditionPathExists" }
+  - { src: "ExecStart=/usr/sbin/slurmd", dest: "ExecStart=/usr/sbin/slurmd --conf-server pi0" }

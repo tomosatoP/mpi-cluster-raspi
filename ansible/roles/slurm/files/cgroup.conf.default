@@ -1,0 +1,6 @@
+# Default cgroup/v2 values for Raspberry Pi 4
+CgroupPlugin=autodetect
+ConstrainCores=no
+ConstrainDevices=no
+ConstrainRAMSpace=no
+ConstrainSwapSpace=no

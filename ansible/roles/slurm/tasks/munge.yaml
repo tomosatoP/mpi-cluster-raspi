@@ -1,0 +1,38 @@
+---
+- name: Install munge
+  ansible.builtin.package:
+    name: munge
+    state: latest
+  notify: Restart munge.service
+
+- name: Share munge.key
+  block:
+    - name: Chown mpi munge.key
+      ansible.builtin.file:
+        path: /etc/munge
+        state: directory
+        recurse: true
+        owner: mpi
+        group: mpi
+
+    - name: Rsync munge.key
+      ansible.posix.synchronize:
+        src: /etc/munge/munge.key
+        dest: /etc/munge/munge.key
+        group: true
+        owner: true
+        perms: true
+        use_ssh_args: true
+      notify: Restart munge.service
+
+  always:
+    - name: Chown munge munge.key
+      ansible.builtin.file:
+        path: /etc/munge
+        state: directory
+        recurse: true
+        owner: munge
+        group: munge
+
+- name: flush handlers
+  ansible.builtin.meta: flush_handlers

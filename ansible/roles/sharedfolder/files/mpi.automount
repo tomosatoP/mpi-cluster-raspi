@@ -1,0 +1,8 @@
+[Unit]
+Description=automount mpi
+
+[Automount]
+Where=/mpi
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,27 @@
+---
+- name: Install nfs packages
+  ansible.builtin.package:
+    state: latest
+    name: "{{ item }}"
+  loop: "{{ packages.compute }}"
+
+- name: Create mount point
+  ansible.builtin.file:
+    state: directory
+    path: "{{ sharedfolder.path }}"
+    mode: "{{ sharedfolder.mode }}"
+    owner: "{{ sharedfolder.owner }}"
+    group: "{{ sharedfolder.group }}"
+
+- name: Setup mpi.mount
+  ansible.builtin.copy:
+    src: mpi.mount
+    dest: /etc/systemd/system/mpi.mount
+    force: false
+
+- name: Setup mpi.automount
+  ansible.builtin.copy:
+    src: mpi.automount
+    dest: /etc/systemd/system/mpi.automount
+    force: false
+  notify: Restart mpi.automount

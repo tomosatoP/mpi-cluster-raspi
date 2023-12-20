@@ -1,0 +1,7 @@
+---
+gw_ip_address: "0.0.0.0"
+dns_ip_address: "0.0.0.0"
+static_ip_address: "127.0.0.1"
+dnsmasq_conf:
+  - "domain-needed"
+  - "bogus-priv"

@@ -1,0 +1,3 @@
+---
+- ansible.builtin.include_tasks: munge.yaml
+- ansible.builtin.include_tasks: slurm.yaml

@@ -1,0 +1,17 @@
+---
+- name: Install the necessary packages in Apptainer
+  become: true
+  ansible.builtin.package:
+    name: "{{ item }}"
+    state: latest
+  loop: "{{ packages }}"
+
+- name: Download apptainer installer
+  ansible.builtin.get_url:
+    url: "{{ apptainer.installer.url }}{{ apptainer.installer.script}}"
+    dest: "{{ lookup('ansible.builtin.env', 'HOME') }}/{{ apptainer.installer.script }}"
+  notify:
+    - "Del apptainer symbolic link"
+    - "Del apptainer folder"
+    - "Run apptainer installer"
+    - "Create apptainer symbolic link"

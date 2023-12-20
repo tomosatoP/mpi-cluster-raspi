@@ -1,0 +1,7 @@
+---
+- name: Set config_txt
+  ansible.builtin.lineinfile:
+    path: /boot/config.txt
+    regexp: "^{{ item }}$"
+    line: "{{ item }}"
+  loop: "{{ config }}"

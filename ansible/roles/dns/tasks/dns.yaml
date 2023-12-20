@@ -1,0 +1,34 @@
+---
+- name: Update DNS server
+  block:
+    - name: Install DNS service
+      ansible.builtin.package:
+        name: dnsmasq
+        state: latest
+
+    - name: Set dnsmasq.conf
+      ansible.builtin.replace:
+        path: /etc/dnsmasq.conf
+        regexp: "^#{{ item }}$"
+        replace: "{{ item }}"
+      loop: "{{ dnsmasq_conf }}"
+
+    - name: del hosts 127.0.1.1
+      ansible.builtin.lineinfile:
+        path: /etc/hosts
+        regexp: "^127.0.1.1"
+        state: absent
+
+    - name: Set hosts
+      ansible.builtin.blockinfile:
+        path: /etc/hosts
+        block: "{{ hostvars[item].static_ip_address }}\t{{ item }}"
+        marker: "# {mark} ANSIBLE MANAGED BLOCK {{ item }}"
+      loop: "{{ ansible_play_hosts | flatten(1) }}"
+
+  delegate_to: localhost
+  run_once: true
+  notify: Restart dnsmasq.service
+
+- name: flush handlers
+  ansible.builtin.meta: flush_handlers

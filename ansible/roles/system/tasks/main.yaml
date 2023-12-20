@@ -1,0 +1,5 @@
+---
+- ansible.builtin.include_tasks: locale.yaml
+- ansible.builtin.include_tasks: config.yaml
+- ansible.builtin.include_tasks: cmdline.yaml
+  loop: "{{ cmdline }}"

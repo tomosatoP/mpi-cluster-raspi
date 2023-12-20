@@ -1,0 +1,14 @@
+---
+packages:
+  - curl
+  - rpm2cpio
+  - cpio
+  - uidmap
+
+apptainer:
+  command: "apptainer"
+  installer:
+    url: "https://raw.githubusercontent.com/apptainer/apptainer/main/tools/"
+    script: "install-unprivileged.sh"
+  install_dir: "apptainer"
+  link_dir: "/usr/local/bin"
