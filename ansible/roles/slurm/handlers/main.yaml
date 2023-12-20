@@ -12,6 +12,7 @@
     state: restarted
     enabled: true
     daemon_reload: true
+  delegate_to: localhost
 
 - name: Restart slurmd.service
   ansible.builtin.systemd_service:
