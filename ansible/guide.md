@@ -22,12 +22,12 @@
 * ansible_facts.default_ipv4.address => 192.168.68.150
 
 ターゲットノード自身のインベントリ変数を参照
-* inventory_hostname => pi0
+* inventory_hostname => mpi0
 * inventory_dir => /home/mpi/hpc/ansible
 * hostvars[inventory_hostname] => マップ形式のファクト変数一覧
 
 ### 各ターゲットノードの変数
 他のターゲットノードの変数を参照
-* ansible_play_hosts => ["pi0", "pi1", "pi2"]
-* hostvars['pi0']['ansible_all_ipv4_address'] => 192.168.68.150
+* ansible_play_hosts => ["mpi0", "mpi1", "mpi2"]
+* hostvars['mpi0']['ansible_all_ipv4_address'] => 192.168.68.150
 ---
