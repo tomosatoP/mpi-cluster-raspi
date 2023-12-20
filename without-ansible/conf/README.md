@@ -4,7 +4,8 @@
 [cgroup.conf](cgroup.conf)<br>
 
 ##
-[slurm.conf 作成用 HTML ファイル](slurm-wlm-configurator.html)<br>
+[slurm.conf 作成用 HTML ファイル](slurm-wlm-configurator.html)
+もしくは
 https://slurm.schedmd.com/configurator.html
 
 ---
