@@ -5,7 +5,7 @@
 * 共有フォルダの利用
 
 ## NFS サーバーを立てる
-`pi0`
+`mpi0`
 
 ~~~sh
 sudo apt update
@@ -33,12 +33,12 @@ cd /mpi
 nano host
 ~~~
 ~~~diff
-+ pi0 slots=4
-+ pi1 slots=4
-+ pi2 slots=4
++ mpi0 slots=4
++ mpi1 slots=4
++ mpi2 slots=4
 ~~~
 ## 共有フォルダをマウント
-`pi1, pi2`
+`mpi1, mpi2`
 
 共有フォルダのマウント先を作成
 ~~~sh
@@ -58,7 +58,7 @@ sudo nano /etc/systemd/system/mpi.mount
 + Description=mount mpi
 + 
 + [Mount]
-+ What=pi0:/mpi
++ What=mpi0:/mpi
 + Where=/mpi
 + Type=nfs
 ~~~
@@ -76,8 +76,8 @@ sudo nano /etc/systemd/system/mpi.automount
 + WantedBy=multi-user.target
 ~~~
 ~~~sh
-user@host1:~ $ sudo systemctl daemon-reload
-user@host1:~ $ sudo systemctl enable mpi.automount
-user@host1:~ $ sudo systemctl restart mpi.automount
+sudo systemctl daemon-reload
+sudo systemctl enable mpi.automount
+sudo systemctl restart mpi.automount
 ~~~
 ---
