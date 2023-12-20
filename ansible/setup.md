@@ -6,12 +6,14 @@ Ansible とは: [Ansible Documentation](https://docs.ansible.com/ansible/latest/
 * Ansible の利用
 
 ## Ansible 導入
-`pi0`
+`mpi0`
 ### Python 仮想環境 (venv) を作成
 ~~~sh
 sudo apt update
 sudo apt install python3-pip python3-venv sshpass
-# git clone https://github.com/tomosatoP/hpc.git hpc
+
+git clone https://github.com/tomosatoP/mpi-cluster-raspi.git hpc
+
 python3 -m venv hpc/ansible/venv --upgrade-deps
 ~~~
 使い方
@@ -54,9 +56,9 @@ hpc/ansible/───inventory.yaml      # グループとホストの構成を�
      ├─group_vars/─┬─all.yaml      # 共通のインベントリ変数を記載
      │             ├─control.yaml  # control グループのインベントリ変数を記載
      │             └─managed.yaml  # managed グループのインベントリ変数を記載
-     └─host_vars/─┬─pi0.yaml       # pi0 のインベントリ変数を記載
-                  ├─pi1.yaml       # pi1 のインベントリ変数を記載
-                  └─pi2.yaml       # pi2 のインベントリ変数を記載
+     └─host_vars/─┬─mpi0.yaml      # pi0 のインベントリ変数を記載
+                  ├─mpi1.yaml      # pi1 のインベントリ変数を記載
+                  └─mpi2.yaml      # pi2 のインベントリ変数を記載
 ~~~
 確認
 ~~~sh
