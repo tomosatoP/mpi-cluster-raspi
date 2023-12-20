@@ -9,8 +9,8 @@ conf_files:
   - { src: "cgroup.conf.default", dest: "/etc/slurm/cgroup.conf" }
 
 slurm_conf:
-  - { item: "SlurmctldHost", value: "pi0"}
-  - { item: "NodeName", value: "pi[0-2] CPUs=4 State=UNKNOWN" }
+  - { item: "SlurmctldHost", value: "mpi0"}
+  - { item: "NodeName", value: "mpi[0-2] CPUs=4 State=UNKNOWN" }
   - { item: "SlurmUser", value: "mpi" }
   - { item: "MpiDefault", value: "pmix" }
   - { item: "TaskPlugin", value: "task/cgroup,task/affinity" }
