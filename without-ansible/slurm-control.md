@@ -24,7 +24,7 @@ sudo chown mpi:mpi -R /var/lib/slurm
 # 初期設定の slurm.conf は、下記で作成
 start /usr/share/doc/slurmctld/slurm-wlm-configrator.html
 ~~~
-slurm.conf<br>
+[slurm.conf](conf/slurm.conf)
 |項目|default|設定値
 |---|---|---|
 |SlurmctldHost=|linux0|mpi0|
