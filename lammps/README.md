@@ -8,7 +8,7 @@
 ベンチマーク
 > n=1 なので、参考までに
 
-|N nodes|n tasks|c CPUs per task|B|mpi0||mpi1|mpi2|time(s)|rate(%)|
+|N nodes|n tasks|c CPUs per task|B||mpi0|mpi1|mpi2|time(s)|rate(%)|
 |--:|--:|--:|--:|--:|--:|--:|--:|--:|--:|
 |1|1|1|1:1:1||1|-|-|2496|100|
 |1|2||||2|-|-|1533|61|
