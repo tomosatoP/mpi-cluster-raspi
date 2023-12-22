@@ -1,5 +1,5 @@
 ---
-- name: Set config_txt
+- name: Set config.txt
   ansible.builtin.lineinfile:
     path: /boot/config.txt
     regexp: "^{{ item }}$"
