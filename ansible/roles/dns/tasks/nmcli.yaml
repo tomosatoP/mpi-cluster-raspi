@@ -8,4 +8,4 @@
     gw4: "{{ gw_ip_address }}"
     dns4: "{{ dns_ip_address }}"
     state: present
-  notify: activate nmcli wired
+  notify: Activate nmcli wired
