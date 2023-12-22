@@ -22,4 +22,14 @@
 |3|6|2||2|2|2|||
 |3|9|3||3|3|3|||
 |3|12|4||4|4|4|915|37|
+
+Raspberry Pi 4 の `slumd-C` 出力
+|項目|値|
+|---|---|
+|CPUs|4|
+|Boards|1|
+|SocketsPerBoard|1|
+|CoresPerSocket|4|
+|ThreadsPerCore|1|
+|RealMemory|7811|
 ---
