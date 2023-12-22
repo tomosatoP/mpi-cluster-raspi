@@ -29,6 +29,7 @@ Stage: build-lammps
   cmake \
     -C /lammps/cmake/presets/most.cmake \
     -C /lammps/cmake/presets/clang.cmake \
+    -D CMAKE_BUILD_TYPE=Release \
     -D LAMMPS_MEMALIGN=64 \
     -D CMAKE_INSTALL_PREFIX=/opt/lammps \
     -D BUILD_SHARED_LIBS=yes \
