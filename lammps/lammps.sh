@@ -14,6 +14,4 @@ export PMIX_MCA_gds=hash
 # valid values: cma, emulated, none
 export OMPI_MCA_btl_vader_single_copy_mechanism=none
 
-#sbcast -pf ~/sif/lammps.sif lammps.sif
-#sbcast -pf ~/data/in.melt in.melt
 srun apptainer exec lammps.sif lmp -in in.melt
