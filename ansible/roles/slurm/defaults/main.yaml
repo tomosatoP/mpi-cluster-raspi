@@ -28,4 +28,4 @@ cgroup_conf:
 
 slurmd_service:
   - { src: "ConditionPathExists", dest: "#ConditionPathExists" }
-  - { src: "ExecStart=/usr/sbin/slurmd", dest: "ExecStart=/usr/sbin/slurmd --conf-server pi0" }
+  - { src: "ExecStart=/usr/sbin/slurmd", dest: "ExecStart=/usr/sbin/slurmd --conf-server mpi0" }
