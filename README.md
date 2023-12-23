@@ -50,7 +50,7 @@
 `mpi0`
 ### SIF 作成
 ~~~sh
-cp lammps/* /mpi
+cp hpc/lammps/* /mpi
 cd /mpi
 apptainer build lammps.sif lammps.def
 ~~~
