@@ -1,8 +1,0 @@
----
-- name: Set up a static IP address for Ethernet
-  hosts: mpimachines
-  become: true
-
-  tasks:
-    - ansible.builtin.import_role:
-        name: dns
