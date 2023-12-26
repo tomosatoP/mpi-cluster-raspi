@@ -57,7 +57,6 @@ apptainer build lammps.sif lammps.def
 確認
 ~~~sh
 cd /mpi/lammps
-
 apptainer run lammps.sif
 ~~~
 ### 実行
