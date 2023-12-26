@@ -25,7 +25,7 @@ sudo nano /lib/systemd/system/slurmd.service
 - ConditionPathExists=/etc/slurm/slurm.conf
 + #ConditionPathExists=/etc/slurm/slurm.conf
 - ExecStart=/usr/sbin/slurmd -D -s $SLURMD_OPTIONS
-+ ExecStart=/usr/sbin/slurmd --conf-server pi0 -D -s $SLURMD_OPTIONS
++ ExecStart=/usr/sbin/slurmd --conf-server mpi0 -D -s $SLURMD_OPTIONS
 ~~~
 ~~~sh
 sudo systemctl daemon-reload
