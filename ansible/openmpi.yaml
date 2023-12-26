@@ -1,8 +1,0 @@
----
-- name: Install OpenMPI packages
-  hosts: mpimachines
-  become: true
-
-  tasks:
-    - ansible.builtin.import_role:
-        name: openmpi
