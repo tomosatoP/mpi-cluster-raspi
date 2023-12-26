@@ -1,0 +1,47 @@
+Bootstrap: docker
+From: debian
+Stage: build-mpicc
+
+%files
+  mpi-pi.c
+  call-procs.c
+
+%post
+  apt-get -yq update
+  DEBIAN_FRONTEND=noninteractive apt-get -yq install --no-install-recommends \
+    build-essential \
+    libopenmpi-dev
+  apt-get clean
+  rm -rf /var/lib/apt/lists/*
+
+  mpicc mpi-pi.c -o mpi-pi
+  mpicc call-procs.c -o call-procs
+
+Bootstrap: docker
+From: debian
+
+%files from build-mpicc
+  mpi-pi /opt/mpi-pi
+  call-procs /opt/call-procs
+
+%post
+  apt-get -yq update
+  DEBIAN_FRONTEND=noninteractive apt-get -yq install --no-install-recommends \
+    mpi-default-bin
+  apt-get clean
+  rm -rf /var/lib/apt/lists/*
+
+%environment
+  export PATH=/opt:${PATH}
+
+%startscript
+  /opt/mpi-pi
+
+%runscript
+  /opt/call-procs
+
+%test
+  which mpi-pi
+  which call-procs
+
+%help
