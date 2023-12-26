@@ -1,8 +1,8 @@
 #!/bin/bash
 
+#SBATCH -n 9
 #SBATCH -p debug
 #SBATCH -N 3
-#SBATCH -n 9
 #SBATCH --ntasks-per-node 3
 #SBATCH -J LAMMPS
 #SBATCH -o stdout_%J.txt
