@@ -1,7 +1,0 @@
----
-- name: Install Apptainer packages
-  hosts: mpimachines
-
-  tasks:
-    - ansible.builtin.import_role:
-        name: apptainer
