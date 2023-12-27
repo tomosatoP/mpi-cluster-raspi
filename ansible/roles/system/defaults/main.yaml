@@ -10,6 +10,5 @@ cmdline:
   - "swapaccount=1"
 
 config:
-  - "dtoverlay=disable-bt"
-  - "dtoverlay=disable-wifi"
-  - "dtparam=pwr_led_trigger=heartbeat"
+  - { sect: all, opt: dtoverlay, vals: [disable-bt, disable-wifi], stat: present }
+  - { sect: all, opt: dtparam, vals: [pwr_led_trigger=heartbeat], stat: present }
