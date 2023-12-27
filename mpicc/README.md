@@ -2,6 +2,7 @@
 
 [mpi-pi.c](mpi-pi.c)<br>
 [call-proc.c](call-procs.c)<br>
+[mpicc.def](mpicc.def)
 
 ## 使い方
 SIF 作成
