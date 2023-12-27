@@ -1,7 +1,12 @@
 ---
 - name: Set config.txt
-  ansible.builtin.lineinfile:
+  become: true
+  community.general.ini_file:
     path: /boot/config.txt
-    regexp: "^{{ item }}$"
-    line: "{{ item }}"
+    section: "{{ item.sect }}"
+    option: "{{ item.opt }}"
+    values: "{{ item.vals }}"
+    state: "{{ item.stat }}"
+    backup: true
+    no_extra_spaces: true
   loop: "{{ config }}"
