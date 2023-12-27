@@ -1,5 +1,6 @@
 ---
 - name: Update control node
+  become: true
   block:
     - name: Install nfs-server packages
       ansible.builtin.package:
@@ -10,16 +11,16 @@
     - name: Create shared folder
       ansible.builtin.file:
         state: directory
-        path: "{{ sharedfolder.path }}"
-        mode: "{{ sharedfolder.mode }}"
-        owner: "{{ sharedfolder.owner }}"
-        group: "{{ sharedfolder.group }}"
+        path: "{{ mpi.path }}"
+        mode: "0777"
+        owner: "{{ mpi.user }}"
+        group: "{{ mpi.user }}"
 
     - name: Update exports
       ansible.builtin.lineinfile:
         path: /etc/exports
-        regexp: "^{{ sharedfolder.path }}"
-        line: "{{ sharedfolder.path }} {{ exports.ipaddress }}{{ exports.options }}"
+        regexp: "^{{ mpi.path }}"
+        line: "{{ mpi.path }} {{ exports.ipaddress }}{{ exports.options }}"
         backup: true
       notify: Update exportfs
 
