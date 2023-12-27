@@ -1,0 +1,44 @@
+---
+- name: Install nfs packages
+  become: true
+  ansible.builtin.package:
+    state: latest
+    name: "{{ item }}"
+  loop: "{{ packages.compute }}"
+
+- name: Create mount point
+  become: true
+  ansible.builtin.file:
+    state: directory
+    path: "{{ mpi.path }}"
+    mode: "0777"
+    owner: "{{ mpi.user }}"
+    group: "{{ mpi.user }}"
+
+- name: Setup mpi.mount
+  become: true
+  community.general.ini_file:
+    path: /etc/systemd/system/mpi.mount
+    section: "{{ item.sec }}"
+    option: "{{ item.opt }}"
+    value: "{{ item.val }}"
+    state: present
+    backup: true
+    no_extra_spaces: true
+  loop: "{{ mpi_mount }}"
+
+- name: Setup mpi.automount
+  become: true
+  community.general.ini_file:
+    path: /etc/systemd/system/mpi.automount
+    section: "{{ item.sec }}"
+    option: "{{ item.opt }}"
+    value: "{{ item.val }}"
+    state: present
+    backup: true
+    no_extra_spaces: true
+  loop: "{{ mpi_automount }}"
+  notify: Restart mpi.automount
+
+- name: flush handlers
+  ansible.builtin.meta: flush_handlers
