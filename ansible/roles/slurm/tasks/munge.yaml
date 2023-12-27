@@ -1,19 +1,21 @@
 ---
 - name: Install munge
+  become: true
   ansible.builtin.package:
     name: munge
     state: latest
   notify: Restart munge.service
 
 - name: Share munge.key
+  become: true
   block:
-    - name: Chown mpi munge.key
+    - name: Chown mpi.user /munge
       ansible.builtin.file:
         path: /etc/munge
         state: directory
         recurse: true
-        owner: mpi
-        group: mpi
+        owner: "{{ mpi.user }}"
+        group: "{{ mpi.user }}"
 
     - name: Rsync munge.key
       ansible.posix.synchronize:
@@ -26,7 +28,7 @@
       notify: Restart munge.service
 
   always:
-    - name: Chown munge munge.key
+    - name: Chown munge /munge
       ansible.builtin.file:
         path: /etc/munge
         state: directory
