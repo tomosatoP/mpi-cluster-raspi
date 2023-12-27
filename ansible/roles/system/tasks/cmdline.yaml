@@ -6,5 +6,6 @@
   changed_when: false
 
 - name: Set cmdline.txt
+  become: true
   ansible.builtin.command: sed -i 's/$/ {{ item }}/' /boot/cmdline.txt
   when: cmdline_content.stdout is not ansible.builtin.search( item )
