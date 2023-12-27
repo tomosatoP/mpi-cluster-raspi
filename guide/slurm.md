@@ -6,7 +6,7 @@ https://slurm.schedmd.com/man_index.html
 https://slurm.schedmd.com/scontrol.html
 ~~~sh
 # "down" から復帰
-scontrol update nodename=pi[0-2] state=idle
+scontrol update nodename=mpi[0-2] state=idle
 ~~~
 ~~~sh
 # "configless" モードで、 
