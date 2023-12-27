@@ -1,0 +1,64 @@
+---
+- name: Configure SSH public key authentication
+  tags: ssh
+  hosts: managed
+
+  tasks:
+    - ansible.builtin.import_role:
+        name: ssh
+
+- name: Setup DNS service for cluster
+  tags: dns
+  hosts: mpimachines
+
+  tasks:
+    - ansible.builtin.import_role:
+        name: dns
+
+- name: Configure system - timezone, locale, cmdline.txt & config.txt
+  tags: system
+  hosts: mpimachines
+
+  tasks:
+    - ansible.builtin.import_role:
+        name: system
+
+- name: Update installed packages
+  tags: package
+  hosts: mpimachines
+
+  tasks:
+    - ansible.builtin.import_role:
+        name: package
+
+- name: Install OpenMPI packages
+  tags: openmpi
+  hosts: mpimachines
+
+  tasks:
+    - ansible.builtin.import_role:
+        name: openmpi
+
+- name: Setup Apptainer
+  tags: apptainer
+  hosts: mpimachines
+
+  tasks:
+    - ansible.builtin.import_role:
+        name: apptainer
+
+- name: Setup Slurm workload manager
+  tags: slurm
+  hosts: mpimachines
+
+  tasks:
+    - ansible.builtin.import_role:
+        name: slurm
+
+- name: Setup shared folder
+  tags: sharedfolder
+  hosts: managed
+
+  tasks:
+    - ansible.builtin.import_role:
+        name: sharedfolder
