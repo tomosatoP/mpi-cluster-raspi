@@ -1,2 +1,10 @@
 ---
+mpi:
+  control_node: "mpi0"
+  path: "/mpi"
+  user: "mpi"
+
+slurm:
+  nodename: "mpi[0-2] CPUs=4 Boards=1 SocketsPerBoard=1 CoresPerSocket=4 ThreadsPerCore=1 RealMemory=7811 State=UNKNOWN"
+
 gw_ip_address: "192.168.68.1"
