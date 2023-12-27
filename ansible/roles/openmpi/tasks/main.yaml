@@ -1,5 +1,6 @@
 ---
 - name: Install OpenMPI packages
+  become: true
   ansible.builtin.package:
     name: "{{ item }}"
     state: latest
