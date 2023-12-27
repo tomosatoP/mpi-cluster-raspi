@@ -1,3 +1,4 @@
 ---
 - ansible.builtin.include_tasks: munge.yaml
-- ansible.builtin.include_tasks: slurm.yaml
+- ansible.builtin.include_tasks: control.yaml
+- ansible.builtin.include_tasks: compute.yaml
