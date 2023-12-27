@@ -8,8 +8,8 @@
 
 - name: Download apptainer installer
   ansible.builtin.get_url:
-    url: "{{ apptainer.installer.url }}{{ apptainer.installer.script}}"
-    dest: "{{ lookup('ansible.builtin.env', 'HOME') }}/{{ apptainer.installer.script }}"
+    url: "{{ apptainer.installer.url }}/{{ apptainer.installer.script}}"
+    dest: "{{ ansible_facts.env.HOME }}/{{ apptainer.installer.script }}"
   notify:
     - "Del apptainer symbolic link"
     - "Del apptainer folder"
