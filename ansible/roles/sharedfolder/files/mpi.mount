@@ -1,7 +1,0 @@
-[Unit]
-Description=mount mpi
-
-[Mount]
-What=mpi0:/mpi
-Where=/mpi
-Type=nfs
