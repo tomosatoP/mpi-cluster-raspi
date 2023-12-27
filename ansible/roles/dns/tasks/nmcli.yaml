@@ -1,5 +1,6 @@
 ---
 - name: Configure network connection
+  become: true
   community.general.nmcli:
     type: ethernet
     conn_name: "wired"
@@ -8,4 +9,4 @@
     gw4: "{{ gw_ip_address }}"
     dns4: "{{ dns_ip_address }}"
     state: present
-  notify: Activate nmcli wired
+  notify: activate nmcli wired
