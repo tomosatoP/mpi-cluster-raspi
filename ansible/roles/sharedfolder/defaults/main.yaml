@@ -9,9 +9,13 @@ exports:
   ipaddress: "192.168.68.0/24"
   options: "(rw,sync,no_subtree_check)"
 
-sharedfolder:
-  hostname: "mpi0"
-  path: "/mpi"
-  mode: "0777"
-  owner: "mpi"
-  group: "mpi"
+mpi_mount:
+  - { sec: Unit, opt: Description, val: "mount mpi" }
+  - { sec: Mount, opt: What, val: "{{ mpi.control_node }}:{{ mpi.path }}" }
+  - { sec: Mount, opt: Where, val: "{{ mpi.path }}" }
+  - { sec: Mount, opt: Type, val: "nfs" }
+
+mpi_automount:
+  - { sec: Unit, opt: Description, val: "automount mpi" }
+  - { sec: Automount, opt: Where, val: "{{ mpi.path }}" }
+  - { sec: Install, opt: WantedBy, val: "multi-user.target" }
