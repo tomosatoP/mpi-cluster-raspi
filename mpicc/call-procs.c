@@ -3,10 +3,6 @@
 
 /*
   $ mpicc call-procs -o call-procs
-  $ mpiexec -H diffusers,diffa,diffb -n 3 call-procs
-  Calling process 0 out of 3 on diffusers
-  Calling process 1 out of 3 on diffa
-  Calling process 2 out of 3 on diffb
 */
 
 int main(int argc, char **argv)
