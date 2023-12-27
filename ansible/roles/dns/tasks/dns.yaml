@@ -1,5 +1,6 @@
 ---
 - name: Update DNS server
+  become: true
   block:
     - name: Install DNS service
       ansible.builtin.package:
