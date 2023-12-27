@@ -2,7 +2,7 @@
 
 [円周率計算用 C ソース mpi-pi.c](mpi-pi.c)<br>
 [円周率計算 mpi-pi.sh](mpi-pi.sh)<br>
-[ノード表示用 C ソース call-proc.c](call-procs.c)<br>
+[ノード表示用 C ソース call-procs.c](call-procs.c)<br>
 [ノード表示 call-procs.sh](call-procs.sh)<br>
 [Apptainer 用定義ファイル mpicc.def](mpicc.def)
 
