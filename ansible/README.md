@@ -10,8 +10,7 @@ ansible では SSH 接続が必要なことがある為、認証を自動化
 > 後でインストールする `slurm` では、`munge` が代わって認証を行う
 ~~~sh
 # この時点では認証にパスワードを使用
-ansible-playbook -i inventory.avahi.yaml ssh.yaml -k
-ansible-playbook ssh.yaml -k # こっちでも良いかも？
+ansible-playbook site.yaml --tags ssh -k # こっちでも良いかも？
 ~~~
 |ノード|内容|補足|
 |---|---|---|
@@ -22,7 +21,7 @@ ansible-playbook ssh.yaml -k # こっちでも良いかも？
 ## 固定IPアドレス、 DNS サービス
 クラスタを構成する為、クラスタ内のDNSサービスとIPアドレスの固定化
 ~~~sh
-ansible-playbook dns.yaml
+ansible-playbook site.yanml --tags dns
 ~~~
 |ノード|内容|補足|
 |---|---|---|
@@ -32,7 +31,7 @@ ansible-playbook dns.yaml
 ## system 設定
 システム設定を更新
 ~~~sh
-ansible-playbook system.yaml
+ansible-playbook site.yanml --tags system
 ~~~
 |ノード|内容|補足|
 |---|---|---|
@@ -42,13 +41,13 @@ ansible-playbook system.yaml
 
 ## インストール済みパッケージの更新
 ~~~sh
-ansible-playbook package.yaml
+ansible-playbook site.yanml --tags package
 ~~~
 
 ## OpenMPI
 マルチノード並列処理に必要な `OpenMPI` 関連のパッケージをインストール
 ~~~sh
-ansible-playbook openmpi.yaml
+ansible-playbook site.yanml --tags openmpi
 ~~~
 |ノード|内容|補足|
 |---|---|---|
@@ -57,7 +56,7 @@ ansible-playbook openmpi.yaml
 ## Apptainer
 Apptainer (高速計算処理に適したコンテナを生成するツール) をインストール
 ~~~sh
-ansible-playbook apptainer.yaml
+ansible-playbook site.yanml --tags apptainer
 ~~~
 |ノード|内容|補足|
 |---|---|---|
@@ -69,7 +68,7 @@ Slurm workload manager (マルチノード並列処理を管理するツール) 
 > Configless slurm モードを適用して、導入後の管理をさらに楽に
 
 ~~~sh
-ansible-playbook slurm.yaml
+ansible-playbook site.yanml --tags slurm
 ~~~
 |ノード|内容|補足|
 |---|---|---|
@@ -80,7 +79,7 @@ ansible-playbook slurm.yaml
 ## NFS 共有フォルダ
 マルチノード並列処理では、NFS 共有フォルダがだいたい必要
 ~~~sh
-ansible-playbook sharedfolder.yaml
+ansible-playbook site.yanml --tags sharedfolder
 ~~~
 |ノード|内容|補足|
 |---|---|---|
