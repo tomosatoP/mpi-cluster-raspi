@@ -3,7 +3,7 @@ ansible-playbook コマンドで自動構築
 
 前提：`ansible 用の Python 仮想環境` を使う為、 [Ansible 環境](setup.md) を構築済み
 
-以下はすべて、`ansible 用の Python 仮想環境` で行う
+以下はすべて、`ansible 用の Python 仮想環境 (venv)` で行う
 ---
 ## SSH 認証鍵 
 ansible では SSH 接続が必要なことがある為、認証を自動化
