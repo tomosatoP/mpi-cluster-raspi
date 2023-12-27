@@ -16,12 +16,11 @@
       - /bin/bash
       - "{{ apptainer.installer.script }}"
       - "{{ apptainer.install_dir }}"
-    chdir: "/home/mpi/"
-  register: install_status
+    chdir: "{{ ansible_facts.env.HOME }}"
 
 - name: Create apptainer symbolic link
   become: true
   ansible.builtin.file:
-    src: "{{ ansible_facts.env.HOME }}/{{ apptainer.install_dir }}/bin/{{ apptainer.command }}"
+    src: "/home/{{ mpi.user }}/{{ apptainer.install_dir }}/bin/{{ apptainer.command }}"
     dest: "{{ apptainer.link_dir }}/{{ apptainer.command }}"
     state: link
