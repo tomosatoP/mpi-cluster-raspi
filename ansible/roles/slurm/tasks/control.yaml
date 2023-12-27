@@ -1,0 +1,47 @@
+---
+- name: Update control node
+  become: true
+  block:
+    - name: Install slurm packages
+      ansible.builtin.package:
+        name: "{{ item }}"
+        state: latest
+      loop: "{{ packages.control }}"
+
+    - name: Create conf files
+      ansible.builtin.copy:
+        src: "{{ item.src }}"
+        dest: "{{ item.dest }}"
+        force: false
+      loop: "{{ conf_files }}"
+
+    - name: Update slurm.conf
+      community.general.ini_file:
+        path: /etc/slurm/slurm.conf
+        option: "{{ item.opt }}"
+        values: "{{ item.vals }}"
+        state: present
+        backup: true
+        no_extra_spaces: true
+        modify_inactive_option: false
+      loop: "{{ slurm_conf }}"
+
+    - name: Update cgroup.conf
+      community.general.ini_file:
+        path: /etc/slurm/cgroup.conf
+        option: "{{ item.opt }}"
+        values: "{{ item.vals }}"
+        state: present
+        backup: true
+        no_extra_spaces: true
+        modify_inactive_option: false
+      loop: "{{ cgroup_conf }}"
+
+  delegate_to: localhost
+  run_once: true
+  notify:
+    - Restart slurmctld.service
+    - Restart slurmd.service
+
+- name: flush handlers
+  ansible.builtin.meta: flush_handlers
