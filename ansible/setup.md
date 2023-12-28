@@ -14,7 +14,7 @@ sudo apt install git python3-pip python3-venv sshpass
 
 git clone --depth 1 -b release https://github.com/tomosatoP/mpi-cluster-raspi.git hpc
 
-python3 -m venv hpc/ansible/venv --upgrade-deps
+python3 -m venv hpc/ansible/venv --upgrade
 ~~~
 使い方
 ~~~sh
