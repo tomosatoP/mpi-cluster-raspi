@@ -10,7 +10,7 @@ Ansible とは: [Ansible Documentation](https://docs.ansible.com/ansible/latest/
 ### Python 仮想環境 (venv) を作成
 ~~~sh
 sudo apt update
-sudo apt install python3-pip python3-venv sshpass
+sudo apt install git python3-pip python3-venv sshpass
 
 git clone https://github.com/tomosatoP/mpi-cluster-raspi.git hpc
 
