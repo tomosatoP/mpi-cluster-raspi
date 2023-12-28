@@ -5,12 +5,14 @@ ansible-playbook コマンドで自動構築
 
 以下はすべて、`ansible 用の Python 仮想環境 (venv)` で行う
 ---
-## SSH 認証鍵 
+## SSH 認証鍵
 ansible では SSH 接続が必要なことがある為、認証を自動化
 > 後でインストールする `slurm` では、`munge` が代わって認証を行う
 ~~~sh
 # この時点では認証にパスワードを使用
-ansible-playbook site.yaml --tags ssh -k # こっちでも良いかも？
+ansible-playbook site.yaml -i inventory.avahi.yaml --tags ssh -k
+
+ansible-playbook site.yaml --tags ssh
 ~~~
 |ノード|内容|補足|
 |---|---|---|
@@ -28,6 +30,8 @@ ansible-playbook site.yanml --tags dns
 |mpi0|DNSサービスをインストール & 設定|dnsmasq|
 |all|`wired` 接続を設定|NetworkManager|
 
+> 再起動
+
 ## system 設定
 システム設定を更新
 ~~~sh
@@ -43,6 +47,8 @@ ansible-playbook site.yanml --tags system
 ~~~sh
 ansible-playbook site.yanml --tags package
 ~~~
+
+> 再起動
 
 ## OpenMPI
 マルチノード並列処理に必要な `OpenMPI` 関連のパッケージをインストール

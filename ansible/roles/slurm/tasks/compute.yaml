@@ -5,7 +5,7 @@
     name: "{{ item }}"
     state: latest
   loop: "{{ packages.compute }}"
-  notify: Restart Slurmd.service
+  notify: Restart slurmd.service
 
 - name: Chown mpi.user /var
   become: true

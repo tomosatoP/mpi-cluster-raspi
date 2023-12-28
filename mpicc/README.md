@@ -9,7 +9,7 @@
 ## 使い方
 SIF 作成
 ~~~sh
-cp hpc/mpicc/* /mpi/mpicc
+cp -r hpc/mpicc /mpi/mpicc
 cd /mpi/mpicc
 
 apptainer build mpicc.sif mpicc.def
@@ -27,3 +27,5 @@ cd /mpi/mpicc
 sbatch mpi-cc.sh
 sbatch call-procs.sh
 ~~~
+> 事前に、各計算ノードの状態が `idle` であることを確認
+---

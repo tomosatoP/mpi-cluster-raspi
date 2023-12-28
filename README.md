@@ -50,18 +50,21 @@
 `mpi0`
 ### SIF 作成
 ~~~sh
-cp hpc/lammps/* /mpi/lammps
+cp -r hpc/lammps /mpi/lammps
 cd /mpi/lammps
+
 apptainer build lammps.sif lammps.def
 ~~~
 確認
 ~~~sh
 cd /mpi/lammps
+
 apptainer run lammps.sif
 ~~~
 ### 実行
 ~~~sh
 cd /mpi/lammps
+
 sbatch lammps.sh
 ~~~
 > 事前に、各計算ノードの状態が `idle` であることを確認

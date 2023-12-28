@@ -9,7 +9,7 @@
 ## 使い方
 SIF 作成
 ~~~sh
-cp hpc/mpi4py /mpi/mpi4py
+cp -r hpc/mpi4py /mpi/mpi4py
 cd /mpi/mpi4py
 
 apptainer build mpi4py.sif mpi4py.def
@@ -27,3 +27,5 @@ cd /mpi/mpi4py
 sbatch mpi-test1.sh
 sbatch mpi-test2.sh
 ~~~
+> 事前に、各計算ノードの状態が `idle` であることを確認
+---

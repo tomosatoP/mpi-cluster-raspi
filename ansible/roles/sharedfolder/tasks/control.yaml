@@ -26,7 +26,7 @@
 
   delegate_to: localhost
   run_once: true
-  notify: Restart mfs-server.service
+  notify: Restart nfs-server.service
 
 - name: flush handlers
   ansible.builtin.meta: flush_handlers

@@ -14,7 +14,7 @@ sudo apt install git python3-pip python3-venv sshpass
 
 git clone --depth 1 -b release https://github.com/tomosatoP/mpi-cluster-raspi.git hpc
 
-python3 -m venv hpc/ansible/venv --upgrade
+python3 -m venv hpc/ansible/venv --upgrade-deps
 ~~~
 使い方
 ~~~sh
@@ -52,13 +52,14 @@ sed -i.disabled -f ansible.cfg.script ansible.cfg
 ### Ansible インベントリーファイルを作成
 実際のクラスタ構成に合わせて、ファイル構成を修正する
 ~~~
-hpc/ansible/───inventory.yaml      # グループとホストの構成を記載
-     ├─group_vars/─┬─all.yaml      # 共通のインベントリ変数を記載
-     │             ├─control.yaml  # control グループのインベントリ変数を記載
-     │             └─managed.yaml  # managed グループのインベントリ変数を記載
-     └─host_vars/─┬─mpi0.yaml      # mpi0 のインベントリ変数を記載
-                  ├─mpi1.yaml      # mpi1 のインベントリ変数を記載
-                  └─mpi2.yaml      # mpi2 のインベントリ変数を記載
+hpc/ansible/─┬─inventory.yaml       # グループとホストの構成を記載
+     │       └─inventory.avahi.yaml # SSH 認証鍵共有時、一時的に使用
+     ├─group_vars/─┬─all.yaml       # 共通のインベントリ変数を記載
+     │             ├─control.yaml   # control グループのインベントリ変数を記載
+     │             └─managed.yaml   # managed グループのインベントリ変数を記載
+     └─host_vars/──┬─mpi0.yaml      # mpi0 のインベントリ変数を記載
+                   ├─mpi1.yaml      # mpi1 のインベントリ変数を記載
+                   └─mpi2.yaml      # mpi2 のインベントリ変数を記載
 ~~~
 確認
 ~~~sh
@@ -69,7 +70,7 @@ cd hpc/ansible/
 ansible-inventory --list
  > ノードのリスト
 
-ansible all -m ping -k
+ansible -i inventory.avahi.yaml all -m ping -k
  > SSH password: [SSH 接続のパスワードを入力]
  > pingモジュールの結果
 ~~~
@@ -81,10 +82,10 @@ ansible all -m ping -k
 cd hpc/ansible/
 . venv/bin/activate
 
-# 全ノードの再起動 
-ansible all -a "/usr/sbin/reboot" -b
-# 全ノードのシャットダウン
-ansible all -a "/usr/sbin/shutdown now" -b
+# managed グループの再起動 
+ansible -i inventory.avahi.yaml managed -a "/usr/sbin/reboot" -b
+# managed グループのシャットダウン
+ansible -i inventory.avahi.yaml managed -a "/usr/sbin/shutdown now" -b
 ~~~
 ### module を使った場合
 ~~~sh
@@ -92,9 +93,9 @@ ansible all -a "/usr/sbin/shutdown now" -b
 cd hpc/ansible/
 . venv/bin/activate
 
-# 全ノードの再起動 
-ansible all -m ansible.builtin.reboot -b
-# 全ノードのシャットダウン
-ansible all -m community.general.shutdown -b
+# managed グループの再起動 
+ansible -i inventory.avahi.yaml managed -m ansible.builtin.reboot -b
+# managed グループのシャットダウン
+ansible -i inventory.avahi.yaml managed -m community.general.shutdown -b
 ~~~
 ---
