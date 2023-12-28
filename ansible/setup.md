@@ -31,7 +31,7 @@ deactivate
 cd hpc/ansible/
 . venv/bin/activate
 
-pip install -U ansible paramiko
+pip install -U pip ansible paramiko
 
 # 確認
 ansible --version
