@@ -28,8 +28,8 @@ cgroup_conf:
   - { opt: CgroupPlugin, vals: ["autodetect"] }
   - { opt: ConstrainCores, vals: ["yes"] }
   - { opt: ConstrainDevices, vals: ["yes"] }
-  - { opt: ConstrainRAMSpace, vals: ["no"] }
-  - { opt: ConstrainSwapSpace, vals: ["no"] }
+  - { opt: ConstrainRAMSpace, vals: ["yes"] }
+  - { opt: ConstrainSwapSpace, vals: ["yes"] }
 
 slurmd_service:
   - { sect: Unit, opt: ConditionPathExists, vals: [], stat: absent }
