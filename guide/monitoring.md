@@ -32,6 +32,10 @@ sudo systemctl status prometheus.service
 sudo nano /etc/prometheus/prometheus.yml
 ~~~
 ~~~diff
+scrape_configs:
+  - job_name: node
+     static_configs:
+       - targets: ['mpi0:9100', 'mpi1:9100', 'mpi2:9100']
 ~~~
 
 ## Grafana のインストール

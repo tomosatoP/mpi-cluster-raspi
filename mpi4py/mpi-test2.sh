@@ -4,7 +4,7 @@
 #SBATCH -p debug
 #SBATCH -N 3
 #SBATCH --ntasks-per-node 3
-#SBATCH -J LAMMPS
+#SBATCH -J MPI4PY
 #SBATCH -o stdout_%J.txt
 #SBATCH -e stderr_%J.txt
 
