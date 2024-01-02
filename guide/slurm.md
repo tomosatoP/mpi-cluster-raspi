@@ -1,9 +1,7 @@
-# Slurm workload manager
-https://slurm.schedmd.com/overview.html
-## コマンド
-https://slurm.schedmd.com/man_index.html
-### scontrol
-https://slurm.schedmd.com/scontrol.html
+# Slurm workload manager [version: 22.05.8]
+## [概観](https://slurm.schedmd.com/archive/slurm-22.05.8/overview.html)
+## [コマンド](https://slurm.schedmd.com/archive/slurm-22.05.8/man_index.html)
+### [scontrol](https://slurm.schedmd.com/archive/slurm-22.05.8/scontrol.html)
 ~~~sh
 # "down" から復帰
 scontrol update nodename=mpi[0-2] state=idle
@@ -13,20 +11,11 @@ scontrol update nodename=mpi[0-2] state=idle
 # "slurm.conf", "cgroup.conf" などの変更を計算ノード群へ反映
 scontrol reconfigure
 ~~~
-### squeue
-https://slurm.schedmd.com/squeue.html
-### sinfo
-https://slurm.schedmd.com/sinfo.html
-### sbatch
-https://slurm.schedmd.com/sbatch.html
-### sbcast
-https://slurm.schedmd.com/sbcast.html
-### scancel
-https://slurm.schedmd.com/scancel.html
-### srun
-https://slurm.schedmd.com/srun.html
-
-## REST API
-https://slurm.schedmd.com/rest.html
+### [squeue](https://slurm.schedmd.com/archive/slurm-22.05.8/squeue.html)
+### [sinfo](https://slurm.schedmd.com/archive/slurm-22.05.8/sinfo.html)
+### [sbatch](https://slurm.schedmd.com/archive/slurm-22.05.8/sbatch.html)
+### [sbcast](https://slurm.schedmd.com/archive/slurm-22.05.8/sbcast.html)
+### [scancel](https://slurm.schedmd.com/archive/slurm-22.05.8/scancel.html)
+### [srun](https://slurm.schedmd.com/archive/slurm-22.05.8/srun.html)
 
 ---
