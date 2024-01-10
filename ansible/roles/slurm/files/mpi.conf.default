@@ -1,0 +1,14 @@
+# MPI Plugins Configuration
+# https://slurm.schedmd.com/archive/slurm-22.05.8/mpi.conf.html
+#PMIxCliTmpDirBase=
+#PMIxCollFence=
+#PMIxDebug=0
+#PMIxDirectConn=true
+#PMIxDirectConnEarly=false
+#PMIxDirectConnUCX=false
+#PMIxDirectSameArch=false
+#PMIxEnv=
+#PMIxFenceBarrier=false
+#PMIxNetDevicesUCX=
+#PMIxTimeout=300
+#PMIxTlsUCX=
